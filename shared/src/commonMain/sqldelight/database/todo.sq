@@ -1,9 +1,9 @@
 CREATE TABLE todoEntity(
     id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER NOT NULL,
     title TEXT NOT NULL,
-    content TEXT NOT NULL,
-    colorHex INTEGER NOT NULL,
-    created INTEGER NOT NULL
+    completed TEXT NOT NULL,
+    colorHex INTEGER NOT NULL
 );
 
 getAllTodos:
@@ -18,11 +18,11 @@ WHERE id = ?;
 insertTodo:
 INSERT OR REPLACE
 INTO todoEntity(
+    userId,
     id,
     title,
-    content,
-    colorHex,
-    created
+    completed,
+    colorHex
 ) VALUES(?, ?, ?, ?, ?);
 
 deleteTodoById:
