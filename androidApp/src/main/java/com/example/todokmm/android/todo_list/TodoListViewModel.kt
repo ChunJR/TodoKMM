@@ -4,14 +4,14 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todokmm.domain.todo.Todo
-import com.example.todokmm.domain.todo.TodoDataSource
+import com.example.todokmm.domain.todo.LocalDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class TodoListViewModel @Inject constructor(
-    private val todoDataSource: TodoDataSource,
+    private val localDataSource: LocalDataSource,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
@@ -19,13 +19,13 @@ class TodoListViewModel @Inject constructor(
 
     fun loadTodos() {
         viewModelScope.launch {
-            savedStateHandle["todos"] = todoDataSource.getAllTodos()
+            savedStateHandle["todos"] = localDataSource.getAllTodos()
         }
     }
 
     fun deleteTodoById(id: Long) {
         viewModelScope.launch {
-            todoDataSource.deleteTodoById(id)
+            localDataSource.deleteTodoById(id)
             loadTodos()
         }
     }

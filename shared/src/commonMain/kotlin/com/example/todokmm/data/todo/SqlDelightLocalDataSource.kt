@@ -2,9 +2,9 @@ package com.example.todokmm.data.todo
 
 import com.example.todokmm.database.TodoDatabase
 import com.example.todokmm.domain.todo.Todo
-import com.example.todokmm.domain.todo.TodoDataSource
+import com.example.todokmm.domain.todo.LocalDataSource
 
-class SqlDelightTodoDataSource(db: TodoDatabase): TodoDataSource {
+class SqlDelightLocalDataSource(db: TodoDatabase): LocalDataSource {
 
     private val queries = db.todoQueries
 

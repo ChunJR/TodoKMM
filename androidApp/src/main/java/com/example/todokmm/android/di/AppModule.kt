@@ -2,9 +2,9 @@ package com.example.todokmm.android.di
 
 import android.app.Application
 import com.example.todokmm.data.local.DatabaseDriverFactory
-import com.example.todokmm.data.todo.SqlDelightTodoDataSource
+import com.example.todokmm.data.todo.SqlDelightLocalDataSource
 import com.example.todokmm.database.TodoDatabase
-import com.example.todokmm.domain.todo.TodoDataSource
+import com.example.todokmm.domain.todo.LocalDataSource
 import com.squareup.sqldelight.db.SqlDriver
 import dagger.Module
 import dagger.Provides
@@ -24,7 +24,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideTodoDataSource(driver: SqlDriver): TodoDataSource {
-        return SqlDelightTodoDataSource(TodoDatabase(driver))
+    fun provideTodoDataSource(driver: SqlDriver): LocalDataSource {
+        return SqlDelightLocalDataSource(TodoDatabase(driver))
     }
 }

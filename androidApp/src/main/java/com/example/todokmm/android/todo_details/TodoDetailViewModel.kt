@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.todokmm.domain.todo.Todo
-import com.example.todokmm.domain.todo.TodoDataSource
+import com.example.todokmm.domain.todo.LocalDataSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class TodoDetailViewModel @Inject constructor(
-    private val todoDataSource: TodoDataSource,
+    private val localDataSource: LocalDataSource,
     private val savedStateHandle: SavedStateHandle
 ): ViewModel() {
 
@@ -24,30 +24,6 @@ class TodoDetailViewModel @Inject constructor(
         "todoColor",
         Todo.generateRandomColor()
     )
-
-//    val state = combine(
-//        todoUserId,
-//        isTodoUserIdFocused,
-//        todoId,
-//        isTodoIdFocused,
-//        todoTitle,
-//        isTodoTitleFocused,
-//        todoCompleted,
-//        isTodoCompletedFocused,
-//        todoColor
-//    ) { userId, isUserIdFocused, id, isIdFocused, title, isTitleFocused, completed, isCompletedFocused, color ->
-//        TodoDetailState(
-//            todoUserId = userId,
-//            isTodoUserIdHintVisible = userId.isEmpty() && !isUserIdFocused,
-//            todoId = id,
-//            isTodoIdHintVisible = id.isEmpty() && !isIdFocused,
-//            todoTitle = title,
-//            isTodoTitleHintVisible = title.isEmpty() && !isTitleFocused,
-//            todoCompleted = completed,
-//            isTodoCompletedHintVisible = completed.isEmpty() && !isCompletedFocused,
-//            todoColor = color
-//        )
-//    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), TodoDetailState())
 
     val state = combine(
         todoTitle,
@@ -68,7 +44,7 @@ class TodoDetailViewModel @Inject constructor(
     private val _hasTodoBeenSaved = MutableStateFlow(false)
     val hasTodoBeenSaved = _hasTodoBeenSaved.asStateFlow()
 
-    private var existingTodoId: Long = -1L
+    private var existingTodoId: Long? = null
 
     init {
         savedStateHandle.get<Long>("todoId")?.let { existingTodoId ->
@@ -77,7 +53,7 @@ class TodoDetailViewModel @Inject constructor(
             }
             this.existingTodoId = existingTodoId
             viewModelScope.launch {
-                todoDataSource.getTodoById(existingTodoId)?.let { todo ->
+                localDataSource.getTodoById(existingTodoId)?.let { todo ->
                     savedStateHandle["todoTitle"] = todo.title
                     savedStateHandle["todoCompleted"] = todo.completed
                     savedStateHandle["todoColor"] = todo.colorHex
@@ -104,7 +80,7 @@ class TodoDetailViewModel @Inject constructor(
 
     fun saveTodo() {
         viewModelScope.launch {
-            todoDataSource.insertTodo(
+            localDataSource.insertTodo(
                 Todo(
                     userId = -1,
                     id = existingTodoId,

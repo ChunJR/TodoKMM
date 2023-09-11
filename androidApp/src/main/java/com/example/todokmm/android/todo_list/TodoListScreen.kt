@@ -71,7 +71,7 @@ fun TodoListScreen(
             ) {
                 items(
                     items = todos,
-                    key = { it.id }
+                    key = { it.id!! }
                 ) { todo ->
                     TodoItem(
                         todo = todo,
@@ -80,7 +80,7 @@ fun TodoListScreen(
                             navController.navigate("todo_detail/${todo.id}")
                         },
                         onDeleteClick = {
-                            viewModel.deleteTodoById(todo.id)
+                            viewModel.deleteTodoById(todo.id!!)
                         },
                         modifier = Modifier
                             .fillMaxWidth()
