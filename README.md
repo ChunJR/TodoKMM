@@ -16,13 +16,13 @@ Kotlin Multiple App that shows Todo list and Todo details
 1. Write a Kotlin Multiplatform Mobile KMM project with separate folders for business logic and UI -- Done
 2. Use clean architecture -- Done
 3. Fetch todo list from this API https://jsonplaceholder.typicode.com/todos/ -- Failed
-- gradle issues at branch kodein_ktor, and still need to migrate ktor to v2...
+  - gradle issues at branch kodein_ktor, and still need to migrate ktor to v2...
 4. Store the data in SQLDelight for offline use -- Done
 5. Show the list UI page by page (pagination) using jetpack compose -- Not done yet
-- Written in compose but not implemented paging yet
+  - Written in compose but not implemented paging yet
 6. Show details in details page when clicked on each item from DB using SSoT (db/remote), the URL mapping would be https://jsonplaceholder.typicode.com/todos/1 -- Not yet
-7. Use dependency injection, hilt and kodein -- Not yet
-- implemented Hilt, failed with Kodein
+7. Use dependency injection, hilt and kodein -- Not done yet
+  - implemented Hilt, failed with Kodein
 8. Use jetpack libraries to connect the KMM part from viewModel, data should be flowed using kotlin flow -- Done
 9. The project must be able to run in iOS using swiftUI, with at least “Hello World”. -- Done
 
