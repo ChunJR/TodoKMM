@@ -29,9 +29,10 @@ Kotlin Multiple App that shows Todo list and Todo details
 ## Screenshot
 ---------------------
 * Todo List:
-<img width="199" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/c78cadc4-3079-48a4-87bf-3777bc11b8e5">
+<img width="199" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/0c695c1d-8b68-4935-bfb7-71e184e0a669">
 
 * Todo Details:
-<img width="200" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/0e7a88fb-133e-48df-b3ba-3de82a2b0687">
+<img width="198" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/5f81e946-1509-4541-9335-42192c4587bd">
+
 
 
