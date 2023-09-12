@@ -21,6 +21,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.todokmm.android.splash_screen.SplashScreen
 import com.example.todokmm.android.todo_details.TodoDetailScreen
 import com.example.todokmm.android.todo_list.TodoListScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -71,7 +72,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyApplicationTheme {
                 val navController = rememberNavController()
-                NavHost(navController = navController, startDestination = "todo_list") {
+                NavHost(navController = navController, startDestination = "splash_screen") {
+                    composable(route = "splash_screen") {
+                        SplashScreen(navController = navController)
+                    }
                     composable(route = "todo_list") {
                         TodoListScreen(navController = navController)
                     }

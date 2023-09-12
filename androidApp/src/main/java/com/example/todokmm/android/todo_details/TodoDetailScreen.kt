@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.Scaffold
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.runtime.Composable
@@ -55,6 +56,11 @@ fun TodoDetailScreen(
                 .padding(padding)
                 .padding(16.dp)
         ) {
+            Text(
+                text = "ID: $todoId",
+                fontSize = 20.sp
+            )
+            Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = state.todoTitle,
                 hint = "Enter a title...",
@@ -69,7 +75,7 @@ fun TodoDetailScreen(
             Spacer(modifier = Modifier.height(16.dp))
             TransparentHintTextField(
                 text = state.todoCompleted,
-                hint = "Enter some content...",
+                hint = "Enter status...",
                 isHintVisible = state.isTodoCompletedHintVisible,
                 onValueChanged = viewModel::onTodoCompletedChanged,
                 onFocusChanged = {

@@ -25,30 +25,6 @@ class TodoDetailViewModel @Inject constructor(
         Todo.generateRandomColor()
     )
 
-//    val state = combine(
-//        todoUserId,
-//        isTodoUserIdFocused,
-//        todoId,
-//        isTodoIdFocused,
-//        todoTitle,
-//        isTodoTitleFocused,
-//        todoCompleted,
-//        isTodoCompletedFocused,
-//        todoColor
-//    ) { userId, isUserIdFocused, id, isIdFocused, title, isTitleFocused, completed, isCompletedFocused, color ->
-//        TodoDetailState(
-//            todoUserId = userId,
-//            isTodoUserIdHintVisible = userId.isEmpty() && !isUserIdFocused,
-//            todoId = id,
-//            isTodoIdHintVisible = id.isEmpty() && !isIdFocused,
-//            todoTitle = title,
-//            isTodoTitleHintVisible = title.isEmpty() && !isTitleFocused,
-//            todoCompleted = completed,
-//            isTodoCompletedHintVisible = completed.isEmpty() && !isCompletedFocused,
-//            todoColor = color
-//        )
-//    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), TodoDetailState())
-
     val state = combine(
         todoTitle,
         isTodoTitleFocused,
@@ -68,7 +44,7 @@ class TodoDetailViewModel @Inject constructor(
     private val _hasTodoBeenSaved = MutableStateFlow(false)
     val hasTodoBeenSaved = _hasTodoBeenSaved.asStateFlow()
 
-    private var existingTodoId: Long = -1L
+    private var existingTodoId: Long? = null
 
     init {
         savedStateHandle.get<Long>("todoId")?.let { existingTodoId ->

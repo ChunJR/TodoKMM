@@ -40,7 +40,7 @@ fun TodoItem(
             modifier = Modifier.fillMaxWidth()
         ) {
             Text(
-                text = todo.title,
+                text = "Id: " + todo.id,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp
             )
@@ -57,7 +57,7 @@ fun TodoItem(
         Text(text = todo.title, fontWeight = FontWeight.Light)
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = todo.completed,
+            text = "Status: " + todo.completed,
             color = Color.DarkGray,
             modifier = Modifier.align(Alignment.End)
         )
