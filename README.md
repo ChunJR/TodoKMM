@@ -25,3 +25,13 @@ Kotlin Multiple App that shows Todo list and Todo details
 ** implemented Hilt, failed with Kodein
 * Use jetpack libraries to connect the KMM part from viewModel, data should be flowed using kotlin flow -- Done
 * The project must be able to run in iOS using swiftUI, with at least “Hello World”. -- Done
+
+## Screenshot
+---------------------
+* Todo List:
+<img width="199" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/c78cadc4-3079-48a4-87bf-3777bc11b8e5">
+
+* Todo Details:
+<img width="200" alt="image" src="https://github.com/ChunJR/TodoKMM/assets/16220050/0e7a88fb-133e-48df-b3ba-3de82a2b0687">
+
+
